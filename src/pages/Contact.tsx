@@ -130,7 +130,7 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        placeholder="John Doe"
+                        placeholder=""
                       />
                     </div>
                     <div>
