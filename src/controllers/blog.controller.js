@@ -33,7 +33,7 @@ exports.getBlogById = async (req, res) => {
 exports.publishBlog = async (req, res) => {
   const blog = await Blog.findByIdAndUpdate(
     req.params.id,
-    { status: 'Your blog has been published successfully' },
+    { status: 'published' },
     { new: true }
   );
 

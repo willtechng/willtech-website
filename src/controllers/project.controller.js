@@ -21,7 +21,7 @@ exports.createProject = async (req, res) => {
 };
 
 exports.getProjects = async (req, res) => {
-  const projects = await Project.find({ isArchived: false })
+  const projects = await Project.find({ status: "published" })
     .sort({ createdAt: -1 });
 
   res.json(projects);
