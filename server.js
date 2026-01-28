@@ -16,11 +16,18 @@ const app = express();
 
 connectDB();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://izzytech500willtechng0865ef16main.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.json({ message: 'willTech-website API running' });
+  res.json({ message: 'welcome to willTech-website' });
 });
 
 app.use('/api/auth', authRoutes);
