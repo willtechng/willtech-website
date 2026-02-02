@@ -1,74 +1,57 @@
+import { useEffect, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
-import { Calendar, Clock, ArrowRight, User } from "lucide-react";
+import { Calendar, Clock, ArrowRight, User, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "The Future of Web Development in Nigeria",
-    excerpt: "Exploring the trends and opportunities shaping the Nigerian tech ecosystem in 2024.",
-    category: "Industry Insights",
-    author: "Chinedu Okoro",
-    date: "Dec 15, 2023",
-    readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&h=400&fit=crop",
-  },
-  {
-    id: 2,
-    title: "Getting Started with React: A Beginner's Guide",
-    excerpt: "Everything you need to know to start building modern web applications with React.",
-    category: "Tutorials",
-    author: "Amaka Eze",
-    date: "Dec 10, 2023",
-    readTime: "8 min read",
-    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=400&fit=crop",
-  },
-  {
-    id: 3,
-    title: "Why Data Science Skills Are Essential in 2024",
-    excerpt: "Understanding the growing importance of data literacy in the modern workplace.",
-    category: "Career Advice",
-    author: "Dr. Oluwaseun Adeyemi",
-    date: "Dec 5, 2023",
-    readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-  },
-  {
-    id: 4,
-    title: "Building Secure Applications: Best Practices",
-    excerpt: "Essential security practices every developer should implement in their projects.",
-    category: "Security",
-    author: "Emmanuel Obi",
-    date: "Nov 28, 2023",
-    readTime: "7 min read",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop",
-  },
-  {
-    id: 5,
-    title: "From Bootcamp to Job: Success Stories",
-    excerpt: "Real stories from Willtech_NG graduates who landed their dream tech jobs.",
-    category: "Success Stories",
-    author: "Willtech Team",
-    date: "Nov 20, 2023",
-    readTime: "10 min read",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop",
-  },
-  {
-    id: 6,
-    title: "Cloud Computing Fundamentals for Beginners",
-    excerpt: "An introduction to cloud computing concepts and popular platforms like AWS and Azure.",
-    category: "Tutorials",
-    author: "Tunde Bakare",
-    date: "Nov 15, 2023",
-    readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
-  },
-];
-
-const featuredPost = blogPosts[0];
-const recentPosts = blogPosts.slice(1);
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string | null;
+  content: string;
+  featured_image: string | null;
+  published: boolean;
+  created_at: string;
+}
 
 const Blog = () => {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data, error } = await supabase
+        .from("blog_posts")
+        .select("*")
+        .eq("published", true)
+        .order("created_at", { ascending: false });
+
+      if (!error && data) {
+        setPosts(data);
+      }
+      setLoading(false);
+    };
+    fetchPosts();
+  }, []);
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  };
+
+  const estimateReadTime = (content: string) => {
+    const words = content.split(/\s+/).length;
+    const minutes = Math.ceil(words / 200);
+    return `${minutes} min read`;
+  };
+
+  const featuredPost = posts[0];
+  const recentPosts = posts.slice(1);
+
   return (
     <Layout>
       {/* Hero */}
@@ -91,90 +74,101 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Featured Post */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <Link
-            to={`/blog/${featuredPost.id}`}
-            className="group grid lg:grid-cols-2 gap-8 bg-card rounded-3xl overflow-hidden border border-border shadow-card hover:shadow-card-hover transition-all duration-300"
-          >
-            <div className="h-64 lg:h-auto overflow-hidden">
-              <img
-                src={featuredPost.image}
-                alt={featuredPost.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="p-8 lg:py-12 flex flex-col justify-center">
-              <span className="inline-block px-3 py-1 rounded-full bg-accent/20 text-accent text-sm font-medium w-fit mb-4">
-                {featuredPost.category}
-              </span>
-              <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 group-hover:text-accent transition-colors">
-                {featuredPost.title}
-              </h2>
-              <p className="text-muted-foreground mb-6">{featuredPost.excerpt}</p>
-              <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <User className="w-4 h-4" />
-                  <span>{featuredPost.author}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <span>{featuredPost.date}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  <span>{featuredPost.readTime}</span>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
-      </section>
-
-      {/* Recent Posts */}
-      <section className="py-16 lg:py-24 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-8">
-            Recent Articles
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recentPosts.map((post) => (
+      {loading ? (
+        <section className="py-24 bg-background">
+          <div className="flex items-center justify-center">
+            <Loader2 className="w-8 h-8 animate-spin text-accent" />
+          </div>
+        </section>
+      ) : posts.length === 0 ? (
+        <section className="py-24 bg-background">
+          <div className="container mx-auto px-4 text-center">
+            <p className="text-muted-foreground text-lg">No blog posts yet. Check back soon!</p>
+          </div>
+        </section>
+      ) : (
+        <>
+          {/* Featured Post */}
+          <section className="py-16 lg:py-24 bg-background">
+            <div className="container mx-auto px-4">
               <Link
-                key={post.id}
-                to={`/blog/${post.id}`}
-                className="group bg-card rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1"
+                to={`/blog/${featuredPost.slug}`}
+                className="group grid lg:grid-cols-2 gap-8 bg-card rounded-3xl overflow-hidden border border-border shadow-card hover:shadow-card-hover transition-all duration-300"
               >
-                {/* Image */}
-                <div className="h-48 overflow-hidden">
+                <div className="h-64 lg:h-auto overflow-hidden">
                   <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    src={featuredPost.featured_image || "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&h=400&fit=crop"}
+                    alt={featuredPost.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <span className="inline-block px-2 py-1 rounded-md bg-muted text-muted-foreground text-xs font-medium mb-3">
-                    {post.category}
+                <div className="p-8 lg:py-12 flex flex-col justify-center">
+                  <span className="inline-block px-3 py-1 rounded-full bg-accent/20 text-accent text-sm font-medium w-fit mb-4">
+                    Featured
                   </span>
-                  <h3 className="text-lg font-display font-semibold text-foreground mb-2 group-hover:text-accent transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-sm text-muted-foreground">
-                    <span>{post.date}</span>
-                    <span>{post.readTime}</span>
+                  <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4 group-hover:text-accent transition-colors">
+                    {featuredPost.title}
+                  </h2>
+                  <p className="text-muted-foreground mb-6">{featuredPost.excerpt || featuredPost.content.substring(0, 150) + "..."}</p>
+                  <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      <span>{formatDate(featuredPost.created_at)}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4" />
+                      <span>{estimateReadTime(featuredPost.content)}</span>
+                    </div>
                   </div>
                 </div>
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
+          </section>
+
+          {/* Recent Posts */}
+          {recentPosts.length > 0 && (
+            <section className="py-16 lg:py-24 bg-muted/30">
+              <div className="container mx-auto px-4">
+                <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-8">
+                  Recent Articles
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {recentPosts.map((post) => (
+                    <Link
+                      key={post.id}
+                      to={`/blog/${post.slug}`}
+                      className="group bg-card rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1"
+                    >
+                      {/* Image */}
+                      <div className="h-48 overflow-hidden">
+                        <img
+                          src={post.featured_image || "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&h=400&fit=crop"}
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-6">
+                        <h3 className="text-lg font-display font-semibold text-foreground mb-2 group-hover:text-accent transition-colors line-clamp-2">
+                          {post.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                          {post.excerpt || post.content.substring(0, 100) + "..."}
+                        </p>
+                        <div className="flex items-center justify-between text-sm text-muted-foreground">
+                          <span>{formatDate(post.created_at)}</span>
+                          <span>{estimateReadTime(post.content)}</span>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+        </>
+      )}
     </Layout>
   );
 };

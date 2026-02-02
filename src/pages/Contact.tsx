@@ -10,7 +10,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    details: ["No 11 Leo street opposite mosques akure.","No 13 Taino avenue , olorunde estate ketu Lagos", "Nigeria"],
+    details: ["No 11 Leo stress opposite mosques akure", "No 13 Taino avenue , olorunde estate", "ketu Lagos" ,"Nigeria"],
   },
   {
     icon: Phone,
@@ -219,7 +219,7 @@ const Contact = () => {
             <div className="text-center">
               <MapPin className="w-12 h-12 text-accent mx-auto mb-4" />
               <p className="text-muted-foreground">
-                Ketu, Lagos, Nigeria
+                Ketu Lagos, Nigeria
               </p>
             </div>
           </div>

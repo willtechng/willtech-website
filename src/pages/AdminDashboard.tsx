@@ -4,7 +4,6 @@ import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   LayoutDashboard, 
   BookOpen, 
@@ -18,14 +17,18 @@ import {
   TrendingUp,
   DollarSign,
   Eye,
-  Plus
+  Plus,
+  HelpCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BlogManager } from "@/components/admin/BlogManager";
+import { FAQManager } from "@/components/admin/FAQManager";
 
 const sidebarLinks = [
   { name: "Overview", icon: LayoutDashboard, id: "overview" },
   { name: "Courses", icon: BookOpen, id: "courses" },
   { name: "Blog Posts", icon: FileText, id: "blog" },
+  { name: "FAQs", icon: HelpCircle, id: "faqs" },
   { name: "Projects", icon: Briefcase, id: "projects" },
   { name: "Inquiries", icon: MessageSquare, id: "inquiries" },
   { name: "Users", icon: Users, id: "users" },
@@ -260,17 +263,9 @@ export default function AdminDashboard() {
             </Card>
           )}
 
-          {activeTab === "blog" && (
-            <Card className="bg-card border-border">
-              <CardHeader>
-                <CardTitle>Blog Posts</CardTitle>
-                <CardDescription>Manage your blog content</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Blog management interface coming soon...</p>
-              </CardContent>
-            </Card>
-          )}
+          {activeTab === "blog" && <BlogManager />}
+
+          {activeTab === "faqs" && <FAQManager />}
 
           {activeTab === "projects" && (
             <Card className="bg-card border-border">

@@ -29,7 +29,7 @@ const footerLinks = {
 
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Twitter, href: " https://x.com/Willtech_Ng", label: "Twitter" },
+  { icon: Twitter, href: "https://x.com/Willtech_Ng", label: "Twitter" },
   { icon: Linkedin, href: "https://www.linkedin.com/company/willtech-com/", label: "LinkedIn" },
   { icon: TikTok, href: "https://www.tiktok.com/@willtech.ng?_r=1&_t=ZS-92IEF2CEI40p", label: "TikTok" },
 ];
@@ -106,8 +106,8 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                <span className="text-primary-foreground/70"> No 11 Leo street opposite mosques akure.
-No 13 Taino avenue , olorunde estate , ketu Lagos, Nigeria</span>
+                <span className="text-primary-foreground/70"> Address: No 11 Leo stress opposite mosques akure.
+No 13 Taino avenue , olorunde estate ,ketu Lagos ,Nigeria</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent shrink-0" />

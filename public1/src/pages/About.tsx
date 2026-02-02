@@ -104,16 +104,23 @@ const About = () => {
                 From a Small Training Center to Nigeria's Leading Tech Academy
               </h2>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Willtech_NG was born from a simple observation: Nigeria has immense tech talent, 
-                but limited access to quality, practical training. Our founders, experienced 
-                software engineers, set out to change that.
+                Willtech Nigeria was founded in 2023 with a clear vision to bridge the digital skills gap in Nigeria 
+                while providing innovative software solutions.
               </p>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                Today, we've trained over 5,000 students, partnered with leading tech companies, 
-                and built a community of successful professionals working at top organizations 
-                worldwide. Our graduates work at companies like Microsoft, Google, Flutterwave, 
-                and many more.
+                Willtech Nigeria is a technology company specializing in software solutions, and digital skills
+                training.
               </p>
+              <p>
+                The company focuses on delivering innovative software development services and
+                empowering individuals with digital skills needed to thrive in the modern tech industry.
+              </p>
+              <br />
+              <p>
+                Today,Willtech stands as a forward thinking technology company at the forefront of Nigeria's digital
+                transformation.
+              </p>
+              <br />
               <div className="space-y-3">
                 {["Industry-relevant curriculum", "Expert instructors", "Hands-on projects", "Career support"].map((item) => (
                   <div key={item} className="flex items-center gap-3">

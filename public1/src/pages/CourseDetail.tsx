@@ -12,13 +12,9 @@ const coursesData: Record<number, {
   category: string;
   duration: string;
   students: number;
-  rating: number;
-  price: number;
   level: string;
-  image: string;
   description: string;
   longDescription: string;
-  instructor: { name: string; role: string; image: string };
   curriculum: string[];
   features: string[];
 }> = {
@@ -26,26 +22,20 @@ const coursesData: Record<number, {
     id: 1,
     title: "Full-Stack Web Development Bootcamp",
     category: "Web Development",
-    duration: "12 weeks",
+    duration: "24 weeks",
     students: 234,
-    rating: 4.9,
-    price: 150000,
     level: "Beginner",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop",
     description: "Learn HTML, CSS, JavaScript, React, Node.js and build real projects.",
-    longDescription: "This comprehensive bootcamp takes you from zero to full-stack developer. You'll learn frontend technologies like HTML, CSS, JavaScript, and React, as well as backend development with Node.js, Express, and databases. By the end, you'll have built multiple production-ready projects.",
-    instructor: {
-      name: "Chinedu Okoro",
-      role: "Senior Software Engineer",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-    },
+    longDescription: "Become a professional Fullstack Developer. Learn HTML, CSS, JavaScript, React, Node.js, MongoDB, Express, and deployment. Build real-time, interactive web applications.",
     curriculum: [
-      "Week 1-2: HTML & CSS Fundamentals",
-      "Week 3-4: JavaScript Deep Dive",
-      "Week 5-6: React & State Management",
-      "Week 7-8: Node.js & Express",
-      "Week 9-10: Databases & APIs",
-      "Week 11-12: Final Project & Deployment",
+      "1. HTML & CSS Fundamentals",
+      "2. JavaScript Basics.",
+      "3. Object-Oriented JavaScript",
+      "4. DOM Manipulation.",
+      "5. React Library.",
+      "6. Version Control.",
+      "7. Node.js.",
+      "8. Deployment.",
     ],
     features: [
       "Live instructor-led sessions",
@@ -58,27 +48,20 @@ const coursesData: Record<number, {
   },
   2: {
     id: 2,
-    title: "Mobile App Development with React Native",
-    category: "Mobile Development",
-    duration: "10 weeks",
+    title: "Product Design/ UI/UX",
+    category: "Product Design/ UI/UX",
+    duration: "12 weeks",
     students: 189,
-    rating: 4.8,
-    price: 120000,
     level: "Intermediate",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=400&fit=crop",
     description: "Build cross-platform mobile apps for iOS and Android.",
-    longDescription: "Master mobile app development using React Native. This course covers everything from basic concepts to advanced features like navigation, state management, and native modules. You'll build and publish your own apps to app stores.",
-    instructor: {
-      name: "Amaka Eze",
-      role: "Mobile Developer Lead",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
-    },
+    longDescription: "Learn to design and deliver digital products from user research to prototyping and usability testing.",
+    
     curriculum: [
-      "Week 1-2: React Native Fundamentals",
-      "Week 3-4: Navigation & Routing",
-      "Week 5-6: State Management",
-      "Week 7-8: APIs & Data",
-      "Week 9-10: Publishing & Deployment",
+      "1. Introduction to Product Design (Figma)",
+      "2. User Interface / Visual Design",
+      "3. Interaction Design (Figma)",
+      "4. User Experience (FigJam, Google Forms)",
+      "5. Capstone Project",
     ],
     features: [
       "Live instructor-led sessions",
@@ -91,33 +74,85 @@ const coursesData: Record<number, {
   },
   3: {
     id: 3,
-    title: "Data Science & Machine Learning",
+    title: "Data Analysis & Machine Learning",
     category: "Data Science",
-    duration: "14 weeks",
+    duration: "12 weeks",
     students: 156,
-    rating: 4.9,
-    price: 180000,
     level: "Intermediate",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
     description: "Master Python, data analysis, and machine learning algorithms.",
-    longDescription: "Dive deep into data science and machine learning. Learn Python, pandas, numpy, scikit-learn, and TensorFlow. You'll work on real datasets and build predictive models that solve actual business problems.",
-    instructor: {
-      name: "Dr. Oluwaseun Adeyemi",
-      role: "Data Scientist at MTN",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-    },
+    longDescription: "Learn Python, Excel, SQL, Power BI, and build predictive machine learning models to analyze and forecast trends.",
+    
     curriculum: [
-      "Week 1-3: Python for Data Science",
-      "Week 4-6: Data Analysis & Visualization",
-      "Week 7-9: Machine Learning Fundamentals",
-      "Week 10-12: Deep Learning",
-      "Week 13-14: Capstone Project",
+      "1. Microsoft Excel",
+      "2. SQL",
+      "3. Power BI.",
+      "4. Python Basics.",
+      "5. Python NumPy.",
+      "6. Python Pandas..",
+      "7. Python Plotly.",
+      "8. Machine Learning Basics.",
     ],
     features: [
       "Live instructor-led sessions",
       "Real-world datasets",
       "1-on-1 mentoring",
       "Industry projects",
+      "Certificate of completion",
+      "Lifetime access to materials",
+    ],
+  },
+  4: {
+    id: 1,
+    title: "Cybersecurity",
+    category: "Cybersecurity",
+    duration: "12 weeks",
+    students: 234,
+    level: "Beginner",
+    description: "Learn HTML, CSS, JavaScript, React, Node.js and build real projects.",
+    longDescription: "This course provides an overview of the fundamental concepts, approaches, and methods needed to protect networks, information systems, and digital assets.",
+    curriculum: [
+      "1. Introduction to Cybersecurity.",
+      "2. Fundamentals of Networking",
+      "3. Social Engineering",
+      "4. Access Controls & Biometric.",
+      "5. Operating System Security",
+      "6. Cryptography.",
+      "7. Security Policies & Procedures.",
+      "8. Web Security.",
+    ],
+    features: [
+      "Live instructor-led sessions",
+      "Hands-on projects",
+      "1-on-1 mentoring",
+      "Career support",
+      "Certificate of completion",
+      "Lifetime access to materials",
+    ],
+  },
+  5: {
+    id: 1,
+    title: "Frontend Engineering",
+    category: "Frontend Engineering",
+    duration: "5 weeks",
+    students: 234,
+    level: "Beginner",
+    description: "Learn HTML, CSS, JavaScript, React, Next.js, and build real projects.",
+    longDescription: "Jumpstart your career as a frontend web developer. Learn HTML, CSS, JavaScript, React, Next.js, and build dynamic Single Page Applications (SPAs).",
+    curriculum: [
+      "1. HTML & CSS",
+      "2. JavaScript Basics",
+      "3. Object-Oriented JavaScript",
+      "4. DOM Manipulation",
+      "5. React Library",
+      "6. Next.js",
+      "7. Version Control (Git/GitHub)",
+      "8. Capstone Project",
+    ],
+    features: [
+      "Live instructor-led sessions",
+      "Hands-on projects",
+      "1-on-1 mentoring",
+      "Career support",
       "Certificate of completion",
       "Lifetime access to materials",
     ],
@@ -169,45 +204,34 @@ const CourseDetail = () => {
                   <span>{course.students} students</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-                  <span>{course.rating} rating</span>
+                
                 </div>
               </div>
 
               {/* Instructor */}
               <div className="flex items-center gap-4 p-4 rounded-xl bg-primary-foreground/10 backdrop-blur-sm">
-                <img
-                  src={course.instructor.image}
-                  alt={course.instructor.name}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
+      
                 <div>
-                  <div className="font-medium text-primary-foreground">{course.instructor.name}</div>
-                  <div className="text-sm text-primary-foreground/60">{course.instructor.role}</div>
                 </div>
               </div>
             </div>
 
             {/* Enrollment Card */}
             <div className="bg-card rounded-2xl p-8 shadow-card-hover border border-border">
-              <div className="aspect-video rounded-xl overflow-hidden mb-6">
-                <img src={course.image} alt={course.title} className="w-full h-full object-cover" />
+              
               </div>
               <div className="text-4xl font-display font-bold text-foreground mb-2">
-                ₦{course.price.toLocaleString()}
+              
               </div>
-              <p className="text-muted-foreground mb-6">One-time payment, lifetime access</p>
+              <p className="text-muted-foreground mb-6"></p>
               <Link to={`/enrollment?course=${course.id}`}>
-                <Button variant="accent" size="xl" className="w-full mb-4">
-                  Enroll Now
-                </Button>
+                
               </Link>
               <div className="text-center text-sm text-muted-foreground">
-                Next cohort starts January 2024
+                Next cohort starts June 2026
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Curriculum & Features */}
@@ -266,7 +290,7 @@ const CourseDetail = () => {
           </p>
           <Link to={`/enrollment?course=${course.id}`}>
             <Button variant="accent" size="xl">
-              Enroll Now - ₦{course.price.toLocaleString()}
+              Enroll Now - 
             </Button>
           </Link>
         </div>

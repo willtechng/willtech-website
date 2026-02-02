@@ -5,38 +5,34 @@ import { Link } from "react-router-dom";
 import { Clock, Users, Star, Search, Filter } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
-const categories = ["All", "Web Development", "Mobile Development", "Data Science", "Cybersecurity", "Cloud Computing"];
+const categories = ["All", "Full Stack Web Development", "Product Design UI/UX", "Data Analysis", "Cybersecurity", "Frontend Engineer"];
 
 const allCourses = [
   {
     id: 1,
-    title: "Full-Stack Web Development Bootcamp",
+    title: "Full-Stack Web Development ",
     category: "Web Development",
-    duration: "12 weeks",
+    duration: "24 weeks",
     students: 234,
-    rating: 4.9,
-    price: 150000,
     level: "Beginner",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop",
     description: "Learn HTML, CSS, JavaScript, React, Node.js and build real projects.",
   },
   {
     id: 2,
-    title: "Mobile App Development with React Native",
-    category: "Mobile Development",
-    duration: "10 weeks",
+    title: "Product Design/ UI/UX",
+    category: "Product Design UI/UX",
+    duration: "12 weeks",
     students: 189,
-    rating: 4.8,
-    price: 120000,
     level: "Intermediate",
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop",
-    description: "Build cross-platform mobile apps for iOS and Android.",
+    description: "Build cross-platform Product design for iOS and Android.",
   },
   {
     id: 3,
-    title: "Data Science & Machine Learning",
+    title: "Data Analysis/ Machine Learning",
     category: "Data Science",
-    duration: "14 weeks",
+    duration: "12 weeks",
     students: 156,
     rating: 4.9,
     price: 180000,
@@ -46,36 +42,20 @@ const allCourses = [
   },
   {
     id: 4,
-    title: "Ethical Hacking & Cybersecurity",
+    title: "Cybersecurity",
     category: "Cybersecurity",
-    duration: "8 weeks",
+    duration: "12 weeks",
     students: 98,
-    rating: 4.7,
-    price: 100000,
     level: "Advanced",
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=300&fit=crop",
     description: "Learn penetration testing, security audits, and ethical hacking.",
   },
   {
     id: 5,
-    title: "AWS Cloud Practitioner",
-    category: "Cloud Computing",
-    duration: "6 weeks",
-    students: 145,
-    rating: 4.8,
-    price: 80000,
-    level: "Beginner",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
-    description: "Get certified in AWS cloud fundamentals and best practices.",
-  },
-  {
-    id: 6,
-    title: "Frontend Development with React",
+    title: "Frontend Engineering",
     category: "Web Development",
-    duration: "8 weeks",
+    duration: "5 weeks",
     students: 210,
-    rating: 4.9,
-    price: 100000,
     level: "Beginner",
     image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=300&fit=crop",
     description: "Master React, Redux, and modern frontend development practices.",
@@ -205,11 +185,9 @@ const Courses = () => {
                     {/* Footer */}
                     <div className="flex items-center justify-between pt-4 border-t border-border">
                       <div className="flex items-center gap-1">
-                        <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                        <span className="font-medium text-foreground">{course.rating}</span>
                       </div>
                       <span className="text-xl font-display font-bold text-accent">
-                        ₦{course.price.toLocaleString()}
+                      
                       </span>
                     </div>
                   </div>

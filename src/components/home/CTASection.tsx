@@ -24,8 +24,6 @@ export function CTASection() {
 
           {/* Heading */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-primary-foreground mb-6">
-            Ready to Transform Your{" "}
-            <span className="text-gradient">Tech Career?</span>
           </h2>
 
           {/* Description */}
@@ -37,10 +35,7 @@ export function CTASection() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/enrollment">
-              <Button variant="hero" size="xl" className="group">
-                Enroll Now
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              
             </Link>
             <Link to="/contact">
               <Button variant="hero-outline" size="xl">

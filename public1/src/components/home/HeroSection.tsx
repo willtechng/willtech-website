@@ -3,15 +3,15 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Users, BookOpen, Award } from "lucide-react";
 const stats = [{
   icon: Users,
-  value: "5000+",
+  value: "100+",
   label: "Students Trained"
 }, {
   icon: BookOpen,
-  value: "50+",
+  value: "6+",
   label: "Courses Available"
 }, {
   icon: Award,
-  value: "95%",
+  value: "99%",
   label: "Success Rate"
 }];
 export function HeroSection() {
@@ -43,16 +43,16 @@ export function HeroSection() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-primary-foreground mb-6 animate-fade-in" style={{
           animationDelay: "0.1s"
         }}>
-            Transform Your Future with{" "}
-            <span className="text-gradient">Tech Skills</span>
+            Master Digital Skills. Build Innovative{" Softwares"}
+            <span className="text-gradient"></span>
           </h1>
 
           {/* Subheading */}
           <p className="text-lg md:text-xl text-primary-foreground/70 mb-10 max-w-2xl mx-auto animate-fade-in" style={{
           animationDelay: "0.2s"
         }}>
-            Master in-demand tech skills with industry experts. From web development to data science, 
-            we prepare you for the careers of tomorrow.
+            At WillTech Nigeria, we train individuals in high-demand digital skills and provide innovative
+software solutions to help businesses thrive.
           </p>
 
           {/* CTA Buttons */}
@@ -66,10 +66,7 @@ export function HeroSection() {
               </Button>
             </Link>
             <Link to="/about">
-              <Button variant="hero-outline" size="xl" className="group">
-                <Play className="w-5 h-5" />
-                Watch How It Works
-              </Button>
+              
             </Link>
           </div>
 
