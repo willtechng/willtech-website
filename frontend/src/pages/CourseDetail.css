@@ -1,0 +1,80 @@
+.cd-hero {
+  background: linear-gradient(160deg, var(--blue-950) 0%, var(--blue-800) 100%);
+  padding: 60px 0 80px;
+}
+.cd-hero-inner { position: relative; }
+.cd-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.88rem;
+  font-family: var(--font-display); font-weight: 600; margin-bottom: 32px;
+  transition: color 0.2s;
+}
+.cd-back:hover { color: white; }
+.cd-back svg { width: 16px; height: 16px; }
+
+.cd-hero-grid {
+  display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: start;
+}
+.cd-badges { display: flex; gap: 10px; margin-bottom: 16px; }
+.cd-badge-cat, .cd-badge-level {
+  font-family: var(--font-display); font-size: 0.72rem; font-weight: 700;
+  padding: 5px 14px; border-radius: 100px;
+}
+.cd-badge-cat { background: rgba(255,255,255,0.12); color: var(--blue-200); }
+.cd-badge-level { background: rgba(41,121,212,0.3); color: var(--blue-200); }
+.cd-hero h1 { color: white; font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 16px; }
+.cd-long-desc { color: rgba(255,255,255,0.65); font-size: 1.05rem; margin-bottom: 24px; line-height: 1.7; }
+.cd-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+.cd-meta span {
+  display: flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.7); font-size: 0.9rem;
+}
+.cd-meta svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+.cd-enroll-card {
+  background: white; border-radius: var(--radius-xl);
+  overflow: hidden; box-shadow: var(--shadow-lg);
+}
+.cd-course-img { height: 200px; overflow: hidden; }
+.cd-course-img img { width: 100%; height: 100%; object-fit: cover; }
+.cd-form { padding: 28px; }
+.cd-form h3 { margin-bottom: 18px; }
+.cd-success { padding: 40px 28px; text-align: center; }
+.cd-success h3 { margin: 12px 0 8px; }
+.success-icon {
+  width: 60px; height: 60px; border-radius: 50%; background: #D1FAE5;
+  margin: 0 auto; display: flex; align-items: center; justify-content: center;
+}
+.success-icon svg { width: 28px; height: 28px; stroke: #059669; stroke-width: 2.5; fill: none; }
+
+.cd-content-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+}
+.cd-content-grid h2 { font-size: 1.6rem; margin-bottom: 24px; }
+.cd-curriculum, .cd-features { display: flex; flex-direction: column; gap: 12px; }
+.cd-curriculum-item, .cd-feature-item {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px; border-radius: var(--radius-md);
+  background: var(--off-white); border: 1px solid var(--border);
+}
+.cd-num {
+  width: 32px; height: 32px; border-radius: var(--radius-sm); flex-shrink: 0;
+  background: var(--blue-50); display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 0.82rem; color: var(--blue-600);
+}
+.cd-feature-item svg {
+  width: 22px; height: 22px; stroke: var(--blue-500); flex-shrink: 0;
+}
+.enroll-notice {
+  background: var(--blue-50); border: 1px solid var(--blue-200);
+  border-radius: var(--radius-sm); padding: 12px 14px;
+  color: var(--blue-700); margin-bottom: 16px; line-height: 1.55;
+}
+
+@media (max-width: 1024px) {
+  .cd-hero-grid { grid-template-columns: 1fr; }
+  .cd-enroll-card { max-width: 560px; }
+}
+@media (max-width: 768px) {
+  .cd-content-grid { grid-template-columns: 1fr; }
+}

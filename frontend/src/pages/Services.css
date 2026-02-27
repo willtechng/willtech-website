@@ -1,0 +1,21 @@
+.services-list { display: flex; flex-direction: column; gap: 24px; }
+.service-full-card {
+  padding: 40px; border-radius: var(--radius-xl);
+  border: 1px solid var(--border); background: var(--white);
+  display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start;
+  transition: all 0.3s;
+}
+.service-full-card:hover { box-shadow: var(--shadow-md); border-color: var(--blue-300); }
+.service-full-icon {
+  width: 64px; height: 64px; border-radius: var(--radius-md);
+  background: var(--blue-50); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.service-full-icon svg { width: 32px; height: 32px; stroke: var(--blue-600); stroke-width: 1.7; fill: none; }
+.service-full-body h3 { font-size: 1.4rem; margin-bottom: 10px; }
+.feature-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.feature-pill {
+  font-size: 0.78rem; font-family: var(--font-display); font-weight: 600;
+  padding: 5px 12px; border-radius: 100px;
+  background: var(--blue-50); color: var(--blue-600); border: 1px solid var(--blue-200);
+}
+@media (max-width: 600px) { .service-full-card { grid-template-columns: 1fr; } }

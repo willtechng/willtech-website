@@ -1,0 +1,193 @@
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--nav-h);
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+.navbar.scrolled { box-shadow: var(--shadow-md); }
+
+.nav-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--blue-900);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  z-index: 1;
+}
+.nav-logo span { color: var(--blue-500); }
+
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  cursor: pointer;
+  background: var(--blue-50);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: background 0.2s, border-color 0.2s;
+  z-index: 1;
+}
+.hamburger:hover {
+  background: var(--blue-100);
+  border-color: var(--blue-300);
+}
+.hamburger.open {
+  background: var(--blue-600);
+  border-color: var(--blue-600);
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--blue-900);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+.hamburger.open span { background: white; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-dropdown {
+  position: fixed;
+  top: var(--nav-h);
+  right: 24px;
+  z-index: 999;
+  width: 260px;
+
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+
+  
+  opacity: 0;
+  transform: translateY(-12px) scale(0.97);
+  pointer-events: none;
+  transform-origin: top right;
+  transition:
+    opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-dropdown.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+.nav-dropdown-inner {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+
+.dropdown-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+  position: relative;
+}
+.dropdown-link:hover {
+  color: var(--blue-700);
+  background: var(--blue-50);
+}
+.dropdown-link.active {
+  color: var(--blue-600);
+  background: var(--blue-50);
+  font-weight: 700;
+}
+.dropdown-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 20%; bottom: 20%;
+  width: 3px;
+  background: var(--blue-500);
+  border-radius: 0 2px 2px 0;
+}
+
+
+.dropdown-admin {
+  margin-top: 6px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--blue-600);
+}
+.dropdown-admin svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--blue-500);
+  flex-shrink: 0;
+}
+.dropdown-admin:hover {
+  background: var(--blue-600);
+  color: white;
+}
+.dropdown-admin:hover svg { stroke: white; }
+.dropdown-admin.active {
+  background: var(--blue-600);
+  color: white;
+}
+.dropdown-admin.active svg { stroke: white; }
+.dropdown-admin.active::before { display: none; }
+
+
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  background: transparent;
+}
+
+
+.nav-dropdown.open .dropdown-link {
+  animation: dropItem 0.25s ease both;
+}
+.nav-dropdown.open .dropdown-link:nth-child(1) { animation-delay: 0.03s; }
+.nav-dropdown.open .dropdown-link:nth-child(2) { animation-delay: 0.06s; }
+.nav-dropdown.open .dropdown-link:nth-child(3) { animation-delay: 0.09s; }
+.nav-dropdown.open .dropdown-link:nth-child(4) { animation-delay: 0.12s; }
+.nav-dropdown.open .dropdown-link:nth-child(5) { animation-delay: 0.15s; }
+.nav-dropdown.open .dropdown-link:nth-child(6) { animation-delay: 0.18s; }
+.nav-dropdown.open .dropdown-link:nth-child(7) { animation-delay: 0.21s; }
+.nav-dropdown.open .dropdown-link:nth-child(8) { animation-delay: 0.24s; }
+
+@keyframes dropItem {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+
+@media (max-width: 480px) {
+  .nav-dropdown {
+    right: 12px;
+    left: 12px;
+    width: auto;
+  }
+}
